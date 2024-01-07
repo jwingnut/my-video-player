@@ -73,4 +73,3 @@ python video_player4.py
 This project is licensed under the UnLicense - see the [LICENSE](LICENSE) file for details.
 ```
 
-You can copy and paste this code block into your README.md file using the nano editor.
