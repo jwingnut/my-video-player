@@ -86,8 +86,19 @@ class VideoPlayer(QWidget):
         if self.current_video < len(self.playlist):
             video_file = self.playlist[self.current_video]
             self.setPipeWireBuffer(512)  # Example buffer size, adjust as needed
-            self.mpv_process = subprocess.Popen(['mpv', '--ao=jack', '--vo=gpu', '--gpu-context=x11egl', '--gpu-api=opengl', video_file])
+            self.mpv_process = subprocess.Popen([
+                'mpv',
+                '--ao=jack',
+                '--hwdec=auto',
+                '--vo=gpu',
+                '--video-sync=display-resample',
+                '--interpolation',
+                '--scale=ewa_lanczossharp',
+                '--deband',
+                video_file
+            ])
             self.current_video += 1
+
 
     def clearPlaylist(self):
         self.playlist = []
